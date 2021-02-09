@@ -2,6 +2,7 @@
 require_once 'vendor/autoload.php';
 
 use classes\Zend;
+use classes\ZendSearch;
 
 spl_autoload_register(function($class) {
     $path = str_replace('\\', '/', $class).'.php';
@@ -9,7 +10,8 @@ spl_autoload_register(function($class) {
         require $path;
 });
 
-$zend = new Zend;
+//$zend = new Zend;
+$zend = new ZendSearch;
 
 function dd($var){
     echo "<pre>";

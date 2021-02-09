@@ -62,9 +62,9 @@ class Ticket extends GetByApi
                 }
 
                 $i++;
-                if($i>2) break;
+
             }
-            break;
+
             if(empty($getTickets->next_page)) break;
             $page++;
         }
