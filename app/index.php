@@ -15,6 +15,6 @@ $zend = new ZendSearch;
 
 function dd($var){
     echo "<pre>";
-    var_dump($var);
+    print_r($var);
     echo "</pre>";
 }

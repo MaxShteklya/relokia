@@ -9,20 +9,31 @@ class ZendSearch extends GetByApi
     public $data;
 
     function __construct() {
+        $tickets = $this->getAllTicketsBySearch();
+        dd($tickets);
+    }
+
+    public function getAllTicketsBySearch() {
+        $data = [];
         $date = "2020-01-01";
+        $page = 1;
         do{
-            $page = 1;
-            $getTickets = GetByApi::get('/api/v2/search.json?query=created>' . $date . '&page=' . $page)->tickets;
-            //TODO: Check if exists tickets. If not - break
 
-            dd($getTickets);
-            if($page == 10){
-                //TODO: Get last date. Update varible
-
+            $getTickets = GetByApi::get('/api/v2/search.json?query=created>' . $date . ' type:ticket&page=' . $page . '&sort_by=created_at')->results;
+            foreach ($getTickets as $ticket) {
+                array_push($data, $ticket);
             }
-            $page++;
+
+            if(empty($getTickets)) break;
+
+            if($page == 10) {
+                $date = end($getTickets)->created_at;
+                $page = 1;
+            }else $page++;
+
         }while(true);
 
+        return $data;
     }
 
 

@@ -11,6 +11,7 @@ abstract class GetByApi
     private $auth = ['auth' => ['maks.shtieklia@gmail.com', 'Rikoriko955']];
 
     public function get($api) {
+        //exit($this->url.$api);
         $client = new Client();
         $response = $client->request('GET', $this->url.$api, $this->auth);
 
