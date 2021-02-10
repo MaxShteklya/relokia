@@ -1,9 +1,9 @@
 <?php
 
 
-namespace classes;
+namespace classes\ZendClasses;
 
-use classes\GetByApi;
+use classes\ZendClasses\GetByApi;
 
 class Contact extends GetByApi
 {

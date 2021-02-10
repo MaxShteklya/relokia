@@ -1,14 +1,14 @@
 <?php
 
 
-namespace classes;
+namespace classes\FreshClasses;
 
 use GuzzleHttp\Client;
 
 abstract class GetByApi
 {
-    private $url = 'https://shipweb.zendesk.com';
-    private $auth = ['auth' => ['maks.shtieklia@gmail.com', 'Rikoriko955']];
+    private $url = 'https://newaccount1612941891487.freshdesk.com/';
+    private $auth = ['auth' => ['m.shtieklia@relokia.com', 'Rikoriko955job']];
 
     public function get($api) {
         //exit($this->url.$api);

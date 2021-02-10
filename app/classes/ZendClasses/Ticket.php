@@ -1,14 +1,14 @@
 <?php
 
 
-namespace classes;
+namespace classes\ZendClasses;
 
-use classes\GetByApi;
-use classes\Agent;
-use classes\Contact;
-use classes\Group;
-use classes\Company;
-use classes\CustomField;
+use classes\ZendClasses\GetByApi;
+use classes\ZendClasses\Agent;
+use classes\ZendClasses\Contact;
+use classes\ZendClasses\Group;
+use classes\ZendClasses\Company;
+use classes\ZendClasses\CustomField;
 
 class Ticket extends GetByApi
 {
@@ -62,12 +62,35 @@ class Ticket extends GetByApi
                 }
 
                 $i++;
-
+                //break;
             }
-
+            //break;
             if(empty($getTickets->next_page)) break;
             $page++;
         }
+
+        return $data;
+    }
+
+    public function getAllTicketsBySearch() {
+        $data = [];
+        $date = "2020-01-01";
+        $page = 1;
+        do{
+
+            $getTickets = GetByApi::get('/api/v2/search.json?query=created>' . $date . ' type:ticket&page=' . $page . '&sort_by=created_at')->results;
+            foreach ($getTickets as $ticket) {
+                array_push($data, $ticket);
+            }
+
+            if(empty($getTickets)) break;
+
+            if($page == 10) {
+                $date = end($getTickets)->created_at;
+                $page = 1;
+            }else $page++;
+
+        }while(true);
 
         return $data;
     }

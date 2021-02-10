@@ -2,19 +2,17 @@
 
 namespace classes;
 
-use classes\Ticket;
+use classes\ZendClasses\Ticket;
 
 class Zend
 {
     public $data;
 
-    function __construct() {
-
+    public function updateCSV() {
         $ticket = new Ticket;
         $tickets = $ticket->getTicketsData();
 
         $this->pushInCSV($tickets);
-        echo "Done.";
     }
 
     public function pushInCSV($data) {

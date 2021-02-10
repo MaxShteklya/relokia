@@ -2,7 +2,9 @@
 require_once 'vendor/autoload.php';
 
 use classes\Zend;
-use classes\ZendSearch;
+use classes\ZendClasses\Ticket;
+
+use classes\Fresh;
 
 spl_autoload_register(function($class) {
     $path = str_replace('\\', '/', $class).'.php';
@@ -11,7 +13,16 @@ spl_autoload_register(function($class) {
 });
 
 //$zend = new Zend;
-$zend = new ZendSearch;
+//$zend->updateCSV();
+
+//$t = new Ticket;
+//$tickets = $t->getTicketsData();
+//$tickets = $t->getAllTicketsBySearch();
+//dd($tickets);
+
+
+$fresh = new Fresh;
+$fresh->start();
 
 function dd($var){
     echo "<pre>";
