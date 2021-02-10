@@ -41,6 +41,9 @@ class Ticket extends GetByApi
         do{
             $getTickets = GetByApi::get('/api/v2/tickets?company_id='.$id.'&updated_since=' . $date . '&order_by=updated_at&order_type=asc&per_page=30&page=' . $page);
             foreach ($getTickets as $ticket) {
+                $contact = new Contact;
+                $data = $contact->getData($ticket->requester_id);
+                $ticket->contact_custom_fields = $data['contact_custom_fields'];
                 array_push($data, $ticket);
             }
             if($page == 3){
