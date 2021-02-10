@@ -13,4 +13,9 @@ class Fresh
         $data = $t->getTicketsData();
         dd($data);
     }
+
+    public function search($id){
+        $t = new Ticket;
+        return $t->getTicketsByCompanyID($id);
+    }
 }

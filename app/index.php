@@ -21,11 +21,26 @@ spl_autoload_register(function($class) {
 //dd($tickets);
 
 
-$fresh = new Fresh;
-$fresh->start();
+//$fresh = new Fresh;
+//$fresh->start();
+if($_POST) {
+    if(!empty($_POST['id'])){
+        $fresh = new Fresh;
+        $result = $fresh->search($_POST['id']);
+        if(empty($result)) echo "Nothing not founded";
+        else dd($result);
+    }
+}
 
 function dd($var){
     echo "<pre>";
     print_r($var);
     echo "</pre>";
 }
+
+?>
+
+<form action="#" method="post">
+    <input type="text" name="id" placeholder="Company ID">
+    <input type="submit" value="Search">
+</form>
