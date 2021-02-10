@@ -23,7 +23,7 @@ class Ticket extends GetByApi
                 $ticket->customer_name=$name;
                 array_push($data, $ticket);
             }
-            if($page % 3 == 0){
+            if($page == 3){
                 $date = end($getTickets)->created_at;
                 $page = 1;
             }else $page++;
